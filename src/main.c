@@ -10,7 +10,6 @@ int main() {
 
     printf("Result: %d\n", fibo->result);
 
-    // Free dynamically allocated memory
     free(add);
     free(mul);
     free(sub);
