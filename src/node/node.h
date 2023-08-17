@@ -20,40 +20,27 @@ typedef struct Node {
     int result;
 } Node;
 
-typedef Node *(*OpFunc)(Node *, Node *);
+typedef Node *(*OpFuncWithNodes)(Node *, Node *);
+typedef Node *(*OpFuncWithInts)(int, int);
 
-typedef Node *(*OpFuncInts)(int, int);
+Node* addNodes(Node* , Node*);
+Node* addInts(int, int);
 
-
-#define add(first, second) _Generic( (first) \
- Node*: addNodes, \
- int: addInts \
-)(first, second)
-
-
-#define sub(first, second) _Generic( (first) \
- Node*: subNodes, \
- int: subInts \
-)(first, second)
-
-#define mul(first, second) _Generic( (first) \
- Node*: mulNodes, \
- int: mulInts \
-)(first, second)
-
-#define divd(first, second) _Generic( (first) \
- Node*: divdNodes, \
- int: divdInts \
-)(first, second)
-
-OpFunc opFunc[] = {
-        add,
-        sub,
-        mul,
-        divd,
+OpFuncWithNodes opFuncWithNodes[] = {
+        addNodes,
 };
 
-OpFunc makeFunc(TagType type) {
-    return opFunc[type];
+OpFuncWithInts opFuncWithInts[] = {
+        addInts,
+};
+
+OpFuncWithNodes makeFunc(TagType type) {
+    return opFuncWithNodes[type];
 }
+
+
+OpFuncWithInts makeFunc(TagType type){
+    return opFuncWithInts[type];
+}
+
 #endif //AGEINTERVIEWQUIZ1_NODE_H
