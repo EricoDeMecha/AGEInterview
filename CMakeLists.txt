@@ -32,8 +32,5 @@ enable_testing()
 include(CTest)
 find_package(cmocka REQUIRED)
 
-if(cmocka_found)
-    message("CMocka Found")
-endif ()
-
-add_executable(${PROJECT_NAME} src/main.c src/node/node.c src/node/node.h)
+add_executable(${PROJECT_NAME} src/node/node.c src/node/node.h tests/node_test.c)
+target_link_libraries(${PROJECT_NAME} cmocka::cmocka)

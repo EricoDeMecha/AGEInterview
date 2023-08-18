@@ -92,7 +92,7 @@ Node *subNodes(Node *first, Node *second) {
         return NULL;
     }
     result->type = SUB;
-    result->value = ((second != NULL ? second->value : 0) + (first != NULL ? first->value : 0));
+    result->value = ((second != NULL ? second->value : 0) - (first != NULL ? first->value : 0));
     return result;
 }
 
