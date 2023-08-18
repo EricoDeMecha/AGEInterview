@@ -23,6 +23,20 @@ Node *divdInts(int first, int second);
 
 Node *divdNodes(Node *first, Node *second);
 
+static OpFuncWithNodes opFuncWithNodes[] = {
+        addNodes,
+        subNodes,
+        mulNodes,
+        divdNodes
+};
+
+static OpFuncWithInts opFuncWithInts[] = {
+        addInts,
+        subInts,
+        mulInts,
+        divdInts,
+};
+
 Node *newNode() {
     Node *newNode = (Node *) malloc(sizeof(Node));
     if (newNode == NULL) {
@@ -95,8 +109,12 @@ Node *mulNodes(Node *first, Node *second) {
 
 Node *divdNodes(Node *first, Node *second) {
     Node *result = newNode();
-    if (result == NULL || second->result == 0) {
+    if(result == NULL){
         return NULL;
+    }
+    if (second == NULL) {
+        second = newNode();
+        second->result = 0;
     }
     result->type = DIV;
     result->result = ((first != NULL ? first->result : 0) / (second != NULL ? second->result : 0));
@@ -104,5 +122,10 @@ Node *divdNodes(Node *first, Node *second) {
 }
 
 
+OpFuncWithNodes getOpFuncNodes(TagType type) {
+    return opFuncWithNodes[type];
+}
 
-
+OpFuncWithInts getOpFuncInts(TagType type) {
+    return opFuncWithInts[type];
+}

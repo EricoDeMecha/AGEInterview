@@ -21,26 +21,11 @@ typedef struct Node {
 } Node;
 
 typedef Node *(*OpFuncWithNodes)(Node *, Node *);
+
 typedef Node *(*OpFuncWithInts)(int, int);
 
-Node* addNodes(Node* , Node*);
-Node* addInts(int, int);
+OpFuncWithNodes getOpFuncNodes(TagType type);
 
-OpFuncWithNodes opFuncWithNodes[] = {
-        addNodes,
-};
-
-OpFuncWithInts opFuncWithInts[] = {
-        addInts,
-};
-
-OpFuncWithNodes makeFunc(TagType type) {
-    return opFuncWithNodes[type];
-}
-
-
-OpFuncWithInts makeFunc(TagType type){
-    return opFuncWithInts[type];
-}
+OpFuncWithInts getOpFuncInts(TagType type);
 
 #endif //AGEINTERVIEWQUIZ1_NODE_H

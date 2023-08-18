@@ -3,14 +3,13 @@
 
 
 int main() {
-    Node* add = add(10, 6);
-    Node* mul = (*makeFunc(MUL))(5, 4);
-    Node* sub = (*makeFunc(SUB))(mul, add);
-    Node* fibo = (*makeFunc(SUB))(sub, NULL);
+    Node* add = (*getOpFuncInts(ADD))(10, 6);
+    Node* mul = (*getOpFuncInts(MUL))(5, 4);
+    Node* sub = (*getOpFuncNodes(SUB))(mul, add);
+    Node* fibo = (*getOpFuncNodes(SUB))(sub, NULL);
 
     printf("Result: %d\n", fibo->result);
 
-    // Free dynamically allocated memory
     free(add);
     free(mul);
     free(sub);
