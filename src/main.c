@@ -8,7 +8,7 @@ int main() {
     Node* sub = (*getOpFuncNodes(SUB))(mul, add);
     Node* fibo = (*getOpFuncNodes(SUB))(sub, NULL);
 
-    printf("Result: %d\n", fibo->result);
+    printf("Result: %d\n", fibo->value);
 
     free(add);
     free(mul);

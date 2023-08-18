@@ -12,17 +12,20 @@ typedef enum TagType {
     SUB,
     MUL,
     DIV,
+    VALUE
 } TagType;
 
 
 typedef struct Node {
     TagType type;
-    int result;
+    int value;
 } Node;
 
 typedef Node *(*OpFuncWithNodes)(Node *, Node *);
 
 typedef Node *(*OpFuncWithInts)(int, int);
+
+Node *newNode();
 
 OpFuncWithNodes getOpFuncNodes(TagType type);
 

@@ -5,8 +5,6 @@
 #include <stdio.h>
 #include "node.h"
 
-Node *newNode();
-
 Node *addInts(int first, int second);
 
 Node *addNodes(Node *first, Node *second);
@@ -43,27 +41,28 @@ Node *newNode() {
         printf("%s: Failed to allocate memory\n", __func__);
         return NULL;
     }
+    newNode->type = VALUE;
     return newNode;
 }
 
 Node *addInts(int first, int second) {
     Node *result = newNode();
     result->type = ADD;
-    result->result = first + second;
+    result->value = first + second;
     return result;
 }
 
 Node *subInts(int first, int second) {
     Node *result = newNode();
     result->type = SUB;
-    result->result = second - first;
+    result->value = second - first;
     return result;
 }
 
 Node *mulInts(int first, int second) {
     Node *result = newNode();
     result->type = MUL;
-    result->result = second * first;
+    result->value = second * first;
     return result;
 }
 
@@ -73,7 +72,7 @@ Node *divdInts(int first, int second) {
     if (second == 0) {
         return NULL;
     }
-    result->result = second / first;
+    result->value = second / first;
     return result;
 }
 
@@ -83,7 +82,7 @@ Node *addNodes(Node *first, Node *second) {
         return NULL;
     }
     result->type = ADD;
-    result->result = ((first != NULL ? first->result : 0) + (second != NULL ? second->result : 0));
+    result->value = ((first != NULL ? first->value : 0) + (second != NULL ? second->value : 0));
     return result;
 }
 
@@ -93,7 +92,7 @@ Node *subNodes(Node *first, Node *second) {
         return NULL;
     }
     result->type = SUB;
-    result->result = ((second != NULL ? second->result : 0) + (first != NULL ? first->result : 0));
+    result->value = ((second != NULL ? second->value : 0) + (first != NULL ? first->value : 0));
     return result;
 }
 
@@ -103,7 +102,7 @@ Node *mulNodes(Node *first, Node *second) {
         return NULL;
     }
     result->type = MUL;
-    result->result = ((first != NULL ? first->result : 0) * (second != NULL ? second->result : 0));
+    result->value = ((first != NULL ? first->value : 0) * (second != NULL ? second->value : 0));
     return result;
 }
 
@@ -114,10 +113,10 @@ Node *divdNodes(Node *first, Node *second) {
     }
     if (second == NULL) {
         second = newNode();
-        second->result = 0;
+        second->value = 0;
     }
     result->type = DIV;
-    result->result = ((first != NULL ? first->result : 0) / (second != NULL ? second->result : 0));
+    result->value = ((first != NULL ? first->value : 0) / (second != NULL ? second->value : 0));
     return result;
 }
 
