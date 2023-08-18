@@ -1,6 +1,6 @@
 
 cmake_minimum_required(VERSION 3.9)
-project(AGEInterviewQuiz1 C)
+project(AGEInterviewQuiz C)
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_BINARY_DIR})
 list(APPEND CMAKE_PREFIX_PATH ${CMAKE_BINARY_DIR})
@@ -32,5 +32,8 @@ enable_testing()
 include(CTest)
 find_package(cmocka REQUIRED)
 
-add_executable(${PROJECT_NAME} src/node/node.c src/node/node.h tests/node_test.c)
-target_link_libraries(${PROJECT_NAME} cmocka::cmocka)
+add_executable(Quiz1 src/node/node.c src/node/node.h tests/node/node_test.c)
+target_link_libraries(Quiz1 cmocka::cmocka)
+
+add_executable(Quiz2 src/piecewise-recurrence/recurrence.c src/piecewise-recurrence/recurrence.h tests/piecewise-recurrence/piecewise_recurrence_test.c)
+target_link_libraries(Quiz2 cmocka::cmocka)

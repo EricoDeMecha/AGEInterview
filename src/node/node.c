@@ -72,7 +72,7 @@ Node *divdInts(int first, int second) {
     if (second == 0) {
         return NULL;
     }
-    result->value = second / first;
+    result->value = first / second;
     return result;
 }
 
