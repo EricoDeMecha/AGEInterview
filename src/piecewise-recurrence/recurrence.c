@@ -4,21 +4,20 @@
 
 #include "recurrence.h"
 
-#define MAX_N 100 // arbitrary number
 
-int recursiveRecurrence(int n) {
+long long int recursiveRecurrence(int n) {
     if (n == 0) return 0;
     if (n == 1) return 1;
     if (n == 2) return 2;
     return recursiveRecurrence(n - 3) + recursiveRecurrence(n - 2);
 }
 
-int iterativeRecurrence(int n) {
+long long int iterativeRecurrence(int n) {
     if (n == 0) return 0;
     if (n == 1) return 1;
     if (n == 2) return 2;
 
-    int dp[n + 1];
+    long long int dp[n + 1];
     dp[0] = 0;
     dp[1] = 1;
     dp[2] = 2;
@@ -30,16 +29,13 @@ int iterativeRecurrence(int n) {
     return dp[n];
 }
 
-static int memo[MAX_N] = {-1};
-
-int memoizedRecurrence(int n) {
+long long int memoizedRecurrence(int n, long long int *memo) {
     if (n == 0) return 0;
     if (n == 1) return 1;
     if (n == 2) return 2;
 
     if (memo[n] != -1) return memo[n];
 
-    memo[n] = memoizedRecurrence(n - 3) + memoizedRecurrence(n - 2);
+    memo[n] = memoizedRecurrence(n - 3, memo) + memoizedRecurrence(n - 2, memo);
     return memo[n];
 }
-

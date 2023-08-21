@@ -8,7 +8,7 @@
 
 #include <stdio.h>
 
-int recursiveRecurrence(int n);
-int iterativeRecurrence(int n);
-int memoizedRecurrence(int n);
+long long int recursiveRecurrence(int n);
+long long int iterativeRecurrence(int n);
+long long int memoizedRecurrence(int n, long long int memo[]);
 #endif //AGEINTERVIEWQUIZ_RECURRENCE_H
